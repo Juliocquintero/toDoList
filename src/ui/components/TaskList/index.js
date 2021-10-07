@@ -8,14 +8,6 @@ const ToDoList = () => {
   const { toDoList, removeToDo } = useContext(ToDoContext);
   const [ordered, setOrdered] = useState(true);
 
-  const handleOrder = () => {
-    if (ordered) {
-      setOrdered(false);
-    } else {
-      setOrdered(true);
-    }
-  };
-
   const order = (a, b) => {
     if (ordered) {
       return a.id - b.id;
@@ -26,7 +18,7 @@ const ToDoList = () => {
 
   return (
     <ToDoWrapper>
-      <OrderButton title="Order List" onClick={handleOrder}>
+      <OrderButton title="Order List" onClick={() => setOrdered(!ordered)}>
         ↑↓
       </OrderButton>
       <List>

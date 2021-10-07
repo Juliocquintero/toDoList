@@ -2,7 +2,7 @@ import { ToDoProvider } from '../../hoc/toDoContext';
 import '../../styles/App.css';
 import Date from '../components/Date';
 import FormComponent from '../components/Form';
-import ToDoList from '../components/tareas';
+import ToDoList from '../components/TaskList';
 
 const App = () => {
   return (
