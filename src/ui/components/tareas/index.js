@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useContext } from 'react';
 import ToDoContext from '../../../hoc/toDoContext';
 import ListItem from './ListItem';
@@ -5,11 +6,31 @@ import { List, OrderButton, ToDoWrapper } from './styles';
 
 const ToDoList = () => {
   const { toDoList, removeToDo } = useContext(ToDoContext);
+  const [ordered, setOrdered] = useState(true);
+
+  const handleOrder = () => {
+    if (ordered) {
+      setOrdered(false);
+    } else {
+      setOrdered(true);
+    }
+  };
+
+  const order = (a, b) => {
+    if (ordered) {
+      return a.id - b.id;
+    } else {
+      return b.id - a.id;
+    }
+  };
+
   return (
     <ToDoWrapper>
-      <OrderButton title="Order List">↑↓</OrderButton>
+      <OrderButton title="Order List" onClick={handleOrder}>
+        ↑↓
+      </OrderButton>
       <List>
-        {toDoList.map((el, i) => (
+        {toDoList.sort(order).map((el, i) => (
           <ListItem key={`${el.id}${i}`} data={el} removeToDo={removeToDo}></ListItem>
         ))}
       </List>
