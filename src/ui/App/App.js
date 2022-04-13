@@ -3,7 +3,7 @@ import "../../styles/App.css";
 import Date from "../components/Date";
 import FormComponent from "../components/Form";
 import ToDoList from "../components/TaskList";
-
+const { screen } = window;
 const App = () => {
   screen.orientation
     .lock("landscape")
@@ -11,7 +11,6 @@ const App = () => {
       alert("Hola");
     })
     .catch((error) => {
-      console.log("fail");
     });
   return (
     <div className="App">
