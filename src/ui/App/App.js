@@ -8,9 +8,10 @@ const App = () => {
   screen.orientation
     .lock("landscape")
     .then(() => {
-      alert("Hola");
+      alert("Success");
     })
     .catch((error) => {
+      alert("Error");
     });
   return (
     <div className="App">
